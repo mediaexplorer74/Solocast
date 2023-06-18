@@ -11,6 +11,9 @@ The long await rewrite of the Windows Podcasts App.
 ![](Images/shot1.png)
 ![](Images/shot2.png)
 ![](Images/shot3.png)
+![](Images/shot4.png)
+![](Images/shot5.png)
+![](Images/shot6.png)
 
 ## Overview
 This application will be an entire rewrite of the exists Podcasts App in Windows 8.1. It will have most of the features that that one has, but it will be built for the Windows Universal Platform.
@@ -34,6 +37,7 @@ These features will be ticked off as I implement them in the app:
 ## References
 - https://github.com/Solocast/solocast-clients/ Original Solocast UWP app
 - https://github.com/robertiagar Robert Iagar, Solocast creator/developer
+- https://www.robertiagar.com/2015/07/08/recreating-the-windows-phone-podcasts-app-as-an-universal-windows-app-part-i/ Recreating the Windows Phone Podcasts app as an Universal Windows App (Part I; 2015 year) 
 
 ## ..
 As is. No support. RnD only.
