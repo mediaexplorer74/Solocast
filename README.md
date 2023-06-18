@@ -1,4 +1,9 @@
-# Podcasts-WindowsUniversal
+## Solocast
+
+- UWP
+- Min. Win. OS Build -> 14393 
+
+## About the original Podcasts-WindowsUniversal
 The long await rewrite of the Windows Podcasts App.
 
 ## Overview
@@ -21,5 +26,15 @@ These features will be ticked off as I implement them in the app:
 [![Stories in Done](https://badge.waffle.io/Solocast/solocast-clients.svg?label=done&title=Done)](http://waffle.io/Solocast/solocast-clients)
 
 [![Stories in Progress](https://badge.waffle.io/Solocast/solocast-clients.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/Solocast/solocast-clients)
+
+## References
+- https://github.com/Solocast/solocast-clients/ Original Solocast UWP app
+- https://github.com/robertiagar Robert Iagar, Solocast creator/developer
+
+## ..
+As is. No support. RnD only.
+
+## .
+[m][e] 2023
 
 
