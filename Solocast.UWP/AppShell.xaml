@@ -34,10 +34,11 @@
                      redundant information when the label is shown.-->
 
                 <!--  ToolTipService.ToolTip="{x:Bind Label}" -->
-                    <FontIcon Grid.Column="0"  
+                <FontIcon Grid.Column="0"  
                           x:Name="Glyph" FontSize="16" Glyph="{x:Bind SymbolAsChar}" 
                           VerticalAlignment="Center" HorizontalAlignment="Center"                          
                           Margin="5,0,0,0"/>
+                
                 <TextBlock x:Name="Text" 
                            Grid.Column="1" Text="{x:Bind Label}" />
             </Grid>
@@ -45,8 +46,38 @@
     </Page.Resources>
 
     <Grid>
+        <!-- Adaptive triggers -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="20" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootSplitView.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="RootSplitView.IsPaneOpen" Value="False"/>
+                        <Setter Target="RootSplitView.Margin" Value="0,0,0,95"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootSplitView.DisplayMode" Value="CompactOverlay"/>
+                        <Setter Target="RootSplitView.IsPaneOpen" Value="True"/>
+                        <Setter Target="NowPlayingGrid.Visibility" Value="Collapsed"/>
+                        <Setter Target="NavMenuList.Margin"  Value="0,48,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
 
-        <!--Experimental-->
+        <MediaElement x:Name="MediaPlayer" 
+                      Visibility="Collapsed"
+                      AudioCategory="BackgroundCapableMedia"
+                      AreTransportControlsEnabled="False"/>
+
         <!-- Top-level navigation menu + app content -->
         <SplitView x:Name="RootSplitView"
                    DisplayMode="CompactInline"
@@ -83,6 +114,7 @@
                     <controls:NavMenuListView.Footer>
                         <Button x:Name="SettingsButton" 
                         TabIndex="4"
+                        ToolTipService.ToolTip="Settings"
                         Style="{StaticResource NavigationSettingsButtonStyle}"
                         Width="{Binding ItemsPanelRoot.Width, ElementName=NavMenuList}"
                         HorizontalAlignment="{Binding ItemsPanelRoot.HorizontalAlignment, ElementName=NavMenuList}"
@@ -108,7 +140,74 @@
             </Frame>
         </SplitView>
 
+        <Grid VerticalAlignment="Bottom"
+              x:Name="NowPlayingGrid"
+              Padding="5"
+              Background="{StaticResource SystemControlBackgroundBaseLowBrush}"
+              Opacity="1" 
+              MaxHeight="95">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="79"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0"
+                   Height="72"
+                   Margin="7"
+                   Source="{Binding ImageUrl, UpdateSourceTrigger=PropertyChanged}"
+                   x:Name="Image"/>
+
+            <Viewbox Grid.Column="1"
+                     Stretch="Uniform"
+                     HorizontalAlignment="Left">
+                <StackPanel Orientation="Vertical" 
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Margin="5">
+                    <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" 
+                               Style="{StaticResource TitleTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Author, UpdateSourceTrigger=PropertyChanged}" 
+                               Style="{StaticResource SubtitleTextBlockStyle}"/>
+                </StackPanel>
+            </Viewbox>
+
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Slider Grid.Column="0"
+                        Height="30"
+                        Width="100"
+                        VerticalAlignment="Center"
+                        Value="{Binding ElapsedSeconds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Maximum="{Binding TotalSeconds}" 
+                        StepFrequency="1"
+                        Minimum="0"
+                        ThumbToolTipValueConverter="{StaticResource SecondsToTimeSpanTextConverter}"/>
+
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal" VerticalAlignment="Center">
+                    <AppBarButton Icon="{Binding PlayPauseIcon}" Label="{Binding PlayPauseLabel}" Command="{Binding PlayPauseCommand}"/>
+                    <AppBarButton Icon="Stop" Label="Stop" Command="{Binding StopCommand}"/>
+                    <AppBarButton Icon="Next" Label="Next" Command="{Binding NextCommand}"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
 
 
+
+        <!-- Declared last to have it rendered above everything else, but it needs to be the first item in the tab sequence. -->
+
+        <!-- ToolTipService.ToolTip="Menu"  -->
+        <ToggleButton x:Name="TogglePaneButton"
+                      TabIndex="1"
+                      Style="{StaticResource SplitViewTogglePaneButtonStyle}"
+                      IsChecked="{Binding IsPaneOpen, ElementName=RootSplitView, Mode=TwoWay}"
+                      Unchecked="TogglePaneButton_Checked"
+                      AutomationProperties.Name="Menu"
+                       />
     </Grid>
 </Page>

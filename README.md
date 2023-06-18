@@ -1,13 +1,24 @@
-## Solocast
+## Solocast 1.1.1
 
 - UWP
 - Min. Win. OS Build -> 14393 
+- Targets: x64; ARM
 
 ## About the original Podcasts-WindowsUniversal
 The long await rewrite of the Windows Podcasts App.
 
+## Screenshots
+![](Images/shot1.png)
+![](Images/shot2.png)
+![](Images/shot3.png)
+
 ## Overview
 This application will be an entire rewrite of the exists Podcasts App in Windows 8.1. It will have most of the features that that one has, but it will be built for the Windows Universal Platform.
+
+## My use case (user story/ scenario of using)
+1. I go to Search mode, do some new podcast search, the copy feed_url to clipboard :)
+2. I switch to Podcasts page, click "+" (add podcast), and paste url. 
+3. Ready to listen somthing new !
 
 ## Features
 These features will be ticked off as I implement them in the app:

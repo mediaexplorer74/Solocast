@@ -81,7 +81,7 @@ namespace Solocast.UWP
                 Current = this;
 
                 //RnD
-                //this.TogglePaneButton.Focus(FocusState.Programmatic);
+                this.TogglePaneButton.Focus(FocusState.Programmatic);
             };
 
             SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManager_BackRequested;
@@ -306,8 +306,8 @@ namespace Solocast.UWP
         /// </summary>
         private void CheckTogglePaneButtonSizeChanged()
         {
+
             //RnD
-            /*
             if (this.RootSplitView.DisplayMode == SplitViewDisplayMode.Inline ||
                 this.RootSplitView.DisplayMode == SplitViewDisplayMode.Overlay)
             {
@@ -321,7 +321,7 @@ namespace Solocast.UWP
             {
                 this.TogglePaneButtonRect = new Rect();
             }
-            */
+            
             var handler = this.TogglePaneButtonRectChanged;
             if (handler != null)
             {
@@ -350,9 +350,10 @@ namespace Solocast.UWP
             }
         }
 
-        private void Slider_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        private void Slider_ManipulationCompleted(object sender, 
+            ManipulationCompletedRoutedEventArgs e)
         {
-
+            //
         }
     }
 }

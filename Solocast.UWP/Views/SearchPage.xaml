@@ -33,16 +33,28 @@
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto"/>
 							<RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
 						</Grid.RowDefinitions>
+                        
 						<Image Source="{Binding ArtworkUrl100}"
 							   VerticalAlignment="Top"
 							   Height="100"
 							   CommonNavigationTransitionInfo.IsStaggerElement="True"/>
-						<TextBlock Grid.Row="1" 
-								   Text="{Binding Name}" 
-								   Width="128" 
-								   TextWrapping="WrapWholeWords" 
-								   CommonNavigationTransitionInfo.IsStaggerElement="True"/>
+
+                        <TextBlock Grid.Row="1" 
+								Text="{Binding Name}" 
+                                   FontSize="14"
+								Width="220" 
+								TextWrapping="WrapWholeWords" 
+								CommonNavigationTransitionInfo.IsStaggerElement="True"/>
+
+                        <TextBox Grid.Row="2" 
+								Text="{Binding FeedUrl}"
+                                   FontSize="10"
+								Width="220" 
+								TextWrapping="WrapWholeWords" 
+                                 BorderThickness="0"
+					   CommonNavigationTransitionInfo.IsStaggerElement="True"/>
 					</Grid>
 				</DataTemplate>
 			</GridView.ItemTemplate>
