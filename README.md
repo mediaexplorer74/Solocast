@@ -30,13 +30,6 @@ These features will be ticked off as I implement them in the app:
 * [ ] Notifications with newly available episodes (**feature not available in current Podcasts version**)
 * [ ] Set number of episodes to keep from each podcast (individually and globaly)
 
-## Build status
-[![Build status](https://ci.appveyor.com/api/projects/status/4cdjy9o9jijx49nq?svg=true)](https://ci.appveyor.com/project/robertiagar/podcasts-windowsuniversal)
-
-## Issue Stats
-[![Stories in Done](https://badge.waffle.io/Solocast/solocast-clients.svg?label=done&title=Done)](http://waffle.io/Solocast/solocast-clients)
-
-[![Stories in Progress](https://badge.waffle.io/Solocast/solocast-clients.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/Solocast/solocast-clients)
 
 ## References
 - https://github.com/Solocast/solocast-clients/ Original Solocast UWP app
