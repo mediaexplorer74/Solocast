@@ -20,10 +20,12 @@
 		<TextBox Grid.Column="0" 
 				 Grid.Row="0" 
 				 Text="{Binding SearchTerms, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        
 		<Button Grid.Column="1"
 				Grid.Row="0"
 				Content="Search"
 				Command="{Binding SearchCommand}"/>
+        
 		<GridView Grid.Row="1"
 				  Grid.ColumnSpan="2"
 				  ItemsSource="{Binding Podcasts}">
@@ -38,7 +40,7 @@
                         
 						<Image Source="{Binding ArtworkUrl100}"
 							   VerticalAlignment="Top"
-							   Height="100"
+							   Height="128"
 							   CommonNavigationTransitionInfo.IsStaggerElement="True"/>
 
                         <TextBlock Grid.Row="1" 
@@ -50,10 +52,8 @@
 
                         <TextBox Grid.Row="2" 
 								Text="{Binding FeedUrl}"
-                                   FontSize="10"
-								Width="220" 
-								TextWrapping="WrapWholeWords" 
-                                 BorderThickness="0"
+                                FontSize="10"
+								Width="220" 								                    
 					   CommonNavigationTransitionInfo.IsStaggerElement="True"/>
 					</Grid>
 				</DataTemplate>

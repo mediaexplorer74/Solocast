@@ -1,4 +1,4 @@
-## Solocast 1.1.1
+## Solocast 1.1.2
 
 - UWP
 - Min. Win. OS Build -> 14393 
